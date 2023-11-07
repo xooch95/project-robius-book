@@ -1,0 +1,1136 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Robius Book</title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation on the Robius project: multi-platform application development in Rust.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">Introduction to Robius</a></li><li class="chapter-item expanded affix "><a href="status.html">→ Current Project Status</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Robius Whitepaper</li><li class="chapter-item expanded "><a href="whitepaper/overview.html"><strong aria-hidden="true">1.</strong> Whitepaper Overview</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper/motivation/motivation.html"><strong aria-hidden="true">1.1.</strong> Motivation: why Robius?</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper/motivation/devs_want_rust.html"><strong aria-hidden="true">1.1.1.</strong> Devs want Rust, but its ecosystem isn't ready</a></li><li class="chapter-item expanded "><a href="whitepaper/motivation/business_cases.html"><strong aria-hidden="true">1.1.2.</strong> Clear business advantages</a></li><li class="chapter-item expanded "><a href="whitepaper/motivation/rust_is_right.html"><strong aria-hidden="true">1.1.3.</strong> Rust language benefits</a></li><li class="chapter-item expanded "><a href="whitepaper/motivation/rust_shortcomings.html"><strong aria-hidden="true">1.1.4.</strong> Shortcomings of Rust</a></li></ol></li><li class="chapter-item expanded "><a href="whitepaper/goals.html"><strong aria-hidden="true">1.2.</strong> Project Goals</a></li><li class="chapter-item expanded "><a href="whitepaper/requirements/requirements.html"><strong aria-hidden="true">1.3.</strong> Technical Requirements</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="whitepaper/requirements/performance_efficiency.html"><strong aria-hidden="true">1.3.1.</strong> High performance and efficiency</a></li><li class="chapter-item expanded "><a href="whitepaper/requirements/fast_startup.html"><strong aria-hidden="true">1.3.2.</strong> Fast app startup</a></li><li class="chapter-item expanded "><a href="whitepaper/requirements/quick_compilation.html"><strong aria-hidden="true">1.3.3.</strong> Quick compilation</a></li><li class="chapter-item expanded "><a href="whitepaper/requirements/consistency_flexibility.html"><strong aria-hidden="true">1.3.4.</strong> Consistency and flexibility</a></li><li class="chapter-item expanded "><a href="whitepaper/requirements/compliance.html"><strong aria-hidden="true">1.3.5.</strong> Platform policy compliance</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> System Architecture</div></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Robius Book</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-to-robius"><a class="header" href="#introduction-to-robius">Introduction to Robius</a></h1>
+<p>Robius is a fully open-source, decentralized, community-driven effort to enable multi-platform application development in Rust.</p>
+<p>The Robius organization also acts as an informal<sup class="footnote-reference"><a href="#1">1</a></sup> working group: a welcoming, public space to collect and discuss resources related to improving and furthering the app dev experience in Rust.</p>
+<blockquote>
+<p>Got a question? Want to get involved? Interested in contributing?<br />
+Come join our friendly community on the <a href="https://matrix.to/#/#robius:matrix.org">Matrix chat Robius space</a>.</p>
+</blockquote>
+<h2 id="our-vision"><a class="header" href="#our-vision">Our vision</a></h2>
+<p>We believe that the Rust programming language is the right choice for the next generation of application developers,
+but that the language ecosystem needs a bit more love and attention to make it a first-class citizen in the world of application development, particularly on mobile platforms.</p>
+<p>We envision a future in which:</p>
+<ol>
+<li>Rust developers can create safe, beautiful, and robust applications that execute efficiently and performantly on a wide variety of platforms, especially mobile.</li>
+<li>Frontend developers using other languages are encouraged to come over to the <del>dark side</del> wonderful world of Rust and give it a try, with a seamless transition experience that helps overcome the steep learning curve commonly associated with Rust.</li>
+<li>The Rust ecosystem is broadened and strengthened, demonstrating to existing Rust experts in other domains that Rust is a great fit for application development, not just low-level systems and embedded programming.</li>
+</ol>
+<h3 id="whats-in-a-name"><a class="header" href="#whats-in-a-name">What's in a name?</a></h3>
+<p>The name <em>Robius</em> comes from the Latin word <a href="http://latin-dictionary.net/definition/33662/robius-robia-robium">robius</a>, meaning red in color, as in oxen, wheat, rust, etc.
+This makes for a nice color-based connection to Rust, our programming language of choice.</p>
+<p>Robius rhymes with Mobius, and our logo/icons take inspiration from the wordplay combination of &quot;Rust&quot; and &quot;Mobius strip&quot;. </p>
+<blockquote>
+<p>Yes, <em>technically</em>, the original German name is Möbius, but we use an Americanized pronunciation with a long &quot;o&quot; sound: &quot;Roe-bee-us&quot; / ˈɹoʊˈbiəs.</p>
+</blockquote>
+<h2 id="key-community-projects"><a class="header" href="#key-community-projects">Key Community Projects</a></h2>
+<p>The Robius ecosystem consists of several independent projects that can be composed into a complete system stack to realize fast, painless application development across multiple platforms in pure Rust.
+Components are loosely coupled, allowing a developer (in the future) to customize which components are used to comprise the underlying system, such as choosing </p>
+<ul>
+<li>
+<p><a href="https://makepad.nl/">Makepad</a> is a cross-platform UI toolkit currently under active development that offers a hybrid retained-mode and immediate-mode UI model.</p>
+<ul>
+<li>Rapid development cycle: <em>very</em> fast compile times due to a custom minimal dependency set, plus a custom DSL for live design that enables hot reloading of UI elements.</li>
+<li>Makepad Studio: an IDE prototype built using Makepad itself with unique features like cross-process shared textures for live reload of an in-window UI app, docking tabs for file/window views, hyper-smooth code folding, and more.</li>
+<li>Makepad framework: a (growing) collection of highly-performant widgets and minimal, zero/low-overhead platform abstractions.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://dioxuslabs.com/">Dioxus</a> is a cross-platform, production-ready UI toolkit that is inspired by React, with a custom metalanguage called RSX that is used to declare UI elements/layout in an HTML-like style.</p>
+<ul>
+<li>Supports <em>many</em> platforms with a set of interchangeable target renderers, including desktop, webapps, static sites, text UIs, liveview, and mobile.</li>
+<li>Fast and memory-efficient, with perfect lighthouse scores and performance orders of magnitude better than Node or Python.</li>
+<li>Excellent built-in abstractions for state management.</li>
+<li>Easy, familiar styling using vanilla CSS or the CSS framework of your choice, e.g., Tailwind.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/osiris-apis">Osiris</a> is a set of Rust interfaces for developing immersive applications atop a diverse set of operating systems services and platform-specific functionality.</p>
+<ul>
+<li>Osiris aims to provide Rust apps with an easy canonical way to access platform features like storage, networking, multimedia (video, audio, camera), geolocation, device orientation (accelerometer, gyro), timers &amp; alarms, notifications, clipboard, drag-n-drop, and more. </li>
+<li><code>osi</code>: the primary Rust package that exposes direct access to OS interfaces. Higher-level Rust abstractions are coming soon, after raw interfaces for more platforms are complete.</li>
+<li>Osiris offers build tooling that can:
+<ol>
+<li>Set up new project directories with auto-generated scaffolding for platform-specific integration components that can be customized post-creation.</li>
+<li>Generate application artifacts that adhere to the policies of each platform, i.e., packages that can be published to common app stores (Google Play, Apple App Store, Microsoft Store, etc).</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://gitee.com/openharmony/commonlibrary_rust_ylong_runtime">ylong</a> is an async runtime for Rust that includes:</p>
+<ul>
+<li><em>Priority</em>-based scheduling of tasks.</li>
+<li>Abstractions for auto-parallelizing computation, offering parallel iterators over data in a manner similar to <a href="https://crates.io/crates/rayon">rayon</a>, but for <em>async tasks</em> rather than native (OS-level) threads.</li>
+<li>Standard primitives for non-blocking async I/O, async synchronization, and async timers.</li>
+<li>An executor and reactor to schedule tasks and respond to system events, respectively.</li>
+</ul>
+</li>
+</ul>
+<h2 id="repositories-of-interest"><a class="header" href="#repositories-of-interest">Repositories of Interest</a></h2>
+<p>Robius aims to provide a fully-functional <em>reference design</em> of the entire system stack beneath the application, for which an architectural overview and detailed documentation will be available.</p>
+<p>We also intend to provide two classes of actual applications:</p>
+<ol>
+<li>Flagships: complete, fully-featured apps with a clean UI design, polished UX, and functional business logic. These apps will be publishable to platform app stores.</li>
+<li>Simple demos: a series of basic example apps that exhibit a few key features, with mock components underneath and elsewhere.</li>
+</ol>
+<h4 id="flagship-apps"><a class="header" href="#flagship-apps">Flagship apps</a></h4>
+<ul>
+<li>Robrix: the Robius Matrix chat client.  Coming soon!
+<ul>
+<li>The needs of this app will be the primary driver for Robius development.</li>
+</ul>
+</li>
+</ul>
+<h4 id="simple-demo-apps"><a class="header" href="#simple-demo-apps">Simple demo apps</a></h4>
+<ul>
+<li><a href="https://github.com/project-robius/makepad_social_media_feed"><code>makepad_social_media_feed</code></a>: a mobile UI demo of a social media feed.
+<ul>
+<li>Also see Makepad's more recent example: <a href="https://github.com/makepad/makepad/tree/master/examples/news_feed">Makepad news feed</a>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/project-robius/makepad_taobao"><code>makepad_taobao</code></a>: a UI demo for an online shopping app, similar to eBay or Taobao.</li>
+<li><a href="https://github.com/project-robius/todo_makepad"><code>todo_makepad</code></a>: a basic to-do list app.</li>
+<li><a href="https://github.com/project-robius/makepad_wechat"><code>makepad_wechat</code></a>: a demo of a chat-like app UI, like WeChat, WhatsApp, Signal, etc.</li>
+<li><a href="https://github.com/project-robius/makepad_tiktok"><code>makepad_tiktok</code></a>: a UI demo for a TikTok-style short video browsing app.</li>
+<li><a href="https://github.com/project-robius/makepad_widgets_sample"><code>makepad_widgets_sample</code></a>: an app showcasing various widgets offered by Makepad.</li>
+<li><a href="https://github.com/project-robius/makepad_image_manipulation"><code>makepad_image_manipulation</code></a>: a demo of Makepad's ability to do funky transformations on images with high performance.</li>
+<li>7 GUIs: select implementations of the 7 GUIs benchmark, atop both <a href="https://github.com/project-robius/makepad_7guis">Makepad</a> and <a href="https://github.com/project-robius/dioxus_7guis">Dioxus</a>.</li>
+</ul>
+<p>For more examples, check out the extensive set of <a href="https://github.com/DioxusLabs/example-projects">Dioxus example apps</a> and <a href="https://github.com/makepad/makepad/tree/master/examples">Makepad example apps</a>. 
+Osiris-specific examples are coming soon.</p>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
+<p>We welcome contributions, ideas, and suggestions from anyone! We're also open to help you host and maintain your project under the umbrella of the Robius organization.</p>
+<p>Translations of book content and READMEs to other languages are especially appreciated! If you're multilingual and feeling generous, kindly reach out to us.</p>
+<p>As mentioned before, please feel free to reach out to our friendly community of devs on the <a href="https://matrix.to/#/#robius:matrix.org">Robius space on Matrix chat</a>.</p>
+<!-- Links below -->
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Robius is not officially affiliated with the Rust project or Rust foundation.</p>
+</div>
+<!-- cspell:ignore Mobius, Möbius, ˈɹoʊˈbiəs -->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="current-status"><a class="header" href="#current-status">Current status</a></h1>
+<p>Robius is a brand new vision -- we're just getting off the ground.</p>
+<p>Currently, the best way to get started is to directly use one of the <a href="status.html#key-community-members">recommended UI toolkits</a> to build out your application's UI and define its UX behavior.
+For now, everything else beyond UI will require you to add the missing pieces yourself, e.g., network connectivity, async multitasking, and access to other device peripherals or system services. </p>
+<p>Everything is developed right here in the open, so check back for updates often!
+We plan to introduce a pre-alpha version of the full Robius system stack (everything beneath the application) by early-to-mid 2024, which will enable easier access to and integration of other platform/OS features alongside the UI toolkits.</p>
+<h2 id="platform-support"><a class="header" href="#platform-support">Platform support</a></h2>
+<p>The following table indicates which projects in the Robius community currently support a given feature on each given platform.</p>
+<p>The key/legend for this table is as follows:</p>
+<ul>
+<li>MP : supported by Makepad.</li>
+<li>DX : supported by Dioxus.</li>
+<li>OS : supported by Osiris.</li>
+<li>—  : feature not applicable or not planned for the given platform.</li>
+<li>Blank table cells indicate the feature has not been started.</li>
+</ul>
+<!-- cspell:disable -->
+<div>
+<br>
+<style type="text/css">
+.tg th{border-color:black;border-style:solid;border-width:2px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-bold-center{font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-left{border-width:2px;text-align:left;vertical-align:top}
+.tg .tg-center{text-align:center;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-bold-center"></th>
+    <th class="tg-bold-center">Android</th>
+    <th class="tg-bold-center">iOS</th>
+    <th class="tg-bold-center">Linux</th>
+    <th class="tg-bold-center">MacOS</th>
+    <th class="tg-bold-center">Windows</th>
+    <th class="tg-bold-center">Web</th>
+    <th class="tg-bold-center">OpenHarmony</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-left">Basic build tool</td>
+    <td class="tg-center">MP DX OS</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX OS</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Basic UI</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">UI live/hot reload</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center">MP DX</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Multiwindow</td>
+    <td class="tg-center">—</td>
+    <td class="tg-center">—</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Input Events</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Timers, Alarms</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Camera</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Audio Input</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Audio Playback</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">MIDI Output</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Video Playback</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Storage/Filesystem</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Networking</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Permissions mgmt</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Geolocation</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Clipboard (text)<br></td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Notifications</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Drag &amp; Drop</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center">MP</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Accelerometer/Gyro</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Vibration/haptics</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Biometric</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">WiFi mgmt</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Bluetooth</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Display brightness</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Power/Battery state</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Physical buttons</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Proximity sensor</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+  <tr>
+    <td class="tg-left">Ambient light sensor</td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+    <td class="tg-center"></td>
+  </tr>
+</tbody>
+</table>
+</div>
+<!-- cspell:enable -->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="robius-whitepaper"><a class="header" href="#robius-whitepaper">Robius Whitepaper</a></h1>
+<p>This chapter contains an informal whitepaper about the Robius project, including:</p>
+<ul>
+<li>The motivation behind Robius — why we chose to embark upon this journey.</li>
+<li>Project goals — what we want to achieve.</li>
+<li>Technical requirements — qualitative and quantitative metrics we must hit.</li>
+<li>System Architecture — a reference design for the full system stack.</li>
+</ul>
+<p>You can also view this whitepaper content as:</p>
+<ul>
+<li><a href="https://github.com/project-robius/files/raw/041e980ec1d14bf325f1fb2ba743f8ed142a70cb/Robius%20-%20A%20Vision%20for%20Multi-platform%20App%20Development%20in%20Rust.pptx">a PowerPoint slide deck (18MB)</a>, <a href="https://github.com/project-robius/files/blob/041e980ec1d14bf325f1fb2ba743f8ed142a70cb/Robius%20-%20A%20Vision%20for%20Multi-platform%20App%20Development%20in%20Rust.pdf">PDF version (15MB)</a></li>
+<li>A conference talk about Robius — <a href="https://youtu.be/8JfOXfmwotQ?si=kLogqnaApYPNuSq8&amp;t=6802">YouTube link</a>, <a href="https://www.bilibili.com/video/BV1AN4y1Z7vs/">Bilibili link</a></li>
+</ul>
+<h2 id="elevator-pitch--robius-in-60-seconds"><a class="header" href="#elevator-pitch--robius-in-60-seconds">Elevator pitch — Robius in 60 seconds</a></h2>
+<p>The Robius project's primary focus is to provide a multi-platform application development toolkit where both the app and the entire system stack are written completely in Rust.
+This will enable developers across all layers to leverage the many benefits of Rust: safety, efficiency, fearless concurrency, high performance, and a robust ecosystem of crates spanning many domains.
+A Rust-only stack avoids the additional complexity brought on by introducing other languages via FFI interop layers; these &quot;bridges&quot; only facilitate the usage of Rust for business logic, and impose high overhead when crossing the boundary between Rust and the platform-native framework.</p>
+<p>Robius's secondary focus is to make the Rust experience on mobile platforms feel like a first-class citizen.
+Historically, Rust on mobile has been a neglected area of the ecosystem, missing key components from build tooling to native-like UIs and widgets to platform support crates.
+We want to make Rust as enjoyable to use on mobile platforms as it is to use in systems programming environments.</p>
+<p>Robius is and always will be fully open-source, decentralized, and community-driven.</p>
+<h2 id="whats-in-a-name-1"><a class="header" href="#whats-in-a-name-1">What's in a name?</a></h2>
+<p>The name <em>Robius</em> comes from the Latin word <a href="http://latin-dictionary.net/definition/33662/robius-robia-robium">robius</a>, meaning red in color, as in oxen, wheat, rust, etc.
+This makes for a nice color-based connection to Rust, our programming language of choice.</p>
+<p>Robius rhymes with Mobius, and our logo/icons take inspiration from the wordplay combination of &quot;Rust&quot; and &quot;Mobius strip&quot;. </p>
+<blockquote>
+<p>Yes, <em>technically</em>, the original German name is Möbius, but we use an Americanized pronunciation with a long &quot;o&quot; sound: &quot;Roe-bee-us&quot; / ˈɹoʊˈbiəs.</p>
+</blockquote>
+<!-- cspell:ignore Mobius, Möbius, ˈɹoʊˈbiəs -->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="motivation-why-robius"><a class="header" href="#motivation-why-robius">Motivation: why Robius?</a></h1>
+<p>Several motivating factors inspired us to start the Robius project:</p>
+<ol>
+<li>App developers want to use Rust, but aren’t sure where or how to get started due to Rust's app dev ecosystem being in a rough state. 
+<ul>
+<li>Paralysis of choice among dozens of partial solutions</li>
+<li>Unclear how to integrate many disparate projects</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<ol start="2">
+<li>There are clear <strong>business advantages</strong> to writing applications in a multi-platform Rust framework.
+<ul>
+<li>Provide a consistent experience for devs and customers</li>
+<li>Avoid redundant dev effort → save money, faster time to market</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<ol start="3">
+<li>Rust is a great language and the right choice for many programming domains, but not for multi-platform apps ... <em>yet</em>.
+<ul>
+<li>Safety → increased correctness, reliability, lower debugging costs</li>
+<li>High performance → responsive, jank-free UI</li>
+<li>No runtime or garbage collection → energy efficiency on mobile devices</li>
+</ul>
+</li>
+</ol>
+<p> </p>
+<p>The following sections examine each of these factors in detail.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="1-developers-really-want-to-write-apps-in-rust"><a class="header" href="#1-developers-really-want-to-write-apps-in-rust">1. Developers <em>really</em> want to write apps in Rust</a></h2>
+<!-- ## 1. Developers express great interest in writing Rust apps -->
+<p>Online programming forums are filled with posts asking how to use Rust to develop mobile, desktop, and web applications. 
+We have observed this trend for several years in two main flavors:</p>
+<ul>
+<li>Existing Rust systems-level developers that wonder if they can leverage their Rust knowledge for applications too.</li>
+<li>Frontend app developers that currently use other languages, but want to use Rust because they have heard about its benefits. </li>
+</ul>
+<p>The former group of Rust devs is mainly focused on the biggest unknown to them: creating GUI apps and packaging apps up for mobile targets; this is the first group that we wish to support with Robius.
+The latter group of frontend devs have deeper expertise in application-level implementation but are not sure how to transition those skills to the world of Rust; this is the second group that we wish to support.
+One major commonality is that both groups are unsure how or where to start developing an app in Rust.</p>
+<h3 id="ecosystem-is-fractured-and-incomplete"><a class="header" href="#ecosystem-is-fractured-and-incomplete">Ecosystem is fractured and incomplete</a></h3>
+<p>The first problem that most aspiring devs encounter is the massive collection of projects, mostly GUI libraries, many of which are incomplete proofs-of-concept or simply abandoned.
+Though there are many competing UI frameworks in the main <code>crates.io</code> registry, it is difficult to discover which ones are most appropriate for a given application's needs, and even harder to determine whether and how these projects can be integrated with others to form a functional app dev toolkit.</p>
+<p>For more evidence, look no further than the <a href="https://areweguiyet.com/"><code>areweguiyet.org</code></a> website, which aims to track the bevy of GUI crates and their progress. Their homepage states:</p>
+<blockquote>
+<p>As a low level language, Rust is perfectly suitable for making user interfaces the old fashioned way, with native APIs. However, competing in today's world typically means supporting many platforms, and that makes using native APIs an unattractive option for many.</p>
+<p>Rust's expressiveness and high level abstractions make it ideal for building intricate and complex user interfaces. Unfortunately, there is little consensus on what the best abstractions are.</p>
+<p>There are a number of bindings available today to existing frameworks, but those looking for a mature, easy to use, and completely Rust-based solution will most likely find themselves out of luck.</p>
+</blockquote>
+<p>Due to the relatively young age of the Rust language itself, many of these crates are incomplete, as building a UI toolkit is a lengthy endeavor.
+Most are only proofs-of-concept that offer barebones UI primitives; 
+even the more mature and fully-developed crates only offer a partial solution for application development, focusing primarily on the UI appearance and fundamental UX behavior. </p>
+<p>As expected, there is not yet a de facto &quot;best&quot; toolkit, nor has the Rust Foundation or Rust project teams made any official recommendation or guidebook concerning this matter.
+Although this is good for the sake of both neutrality and healthy competition, it has led to a fractured ecosystem in which nearly every crate has significant overlap with the functionality of several other crates.
+This overlap makes it even harder to select a UI toolkit for a new app, as the differences between toolkits are minimal on paper and only become evident after several weeks of development experience with each one.</p>
+<p>All in all, there is a noticeable absence of cohesion and coordination in this ecosystem, presenting the most significant barrier of entry to cross-platform application development in Rust.
+This is especially evident when compared to app dev frameworks led by a single directing entity, such as React Native or Flutter. </p>
+<h3 id="apps-need-more-than-just-ui--ux"><a class="header" href="#apps-need-more-than-just-ui--ux">Apps need more than just UI + UX</a></h3>
+<p>Even if GUI development in Rust was a solved problem, UIs do not tell the whole story — an application still needs to access services and features from the underlying platform or OS.
+As with UI works, there are indeed a plethora of crates that offer basic interfaces to access platform-specific features.
+Some offer general abstractions of a single feature across multiple platforms, while others or specific features on a single platform.</p>
+<p>These features are crucial to developing <em>immersive</em> applications that take full advantage of the software and hardware functionality afforded to them by the device platform.
+For example, robust applications typically expect an app dev framework to expose the following:</p>
+<ul>
+<li>camera, multimedia (audio and video) capture and playback, </li>
+<li>geolocation, haptic feedback actuators like vibration motors,</li>
+<li>system services like notifications, drag and drop, a rich clipboard,</li>
+<li>on-device sensors like accelerometers/gyros, barometers, thermometers, proximity and ambient light sensors, etc,</li>
+<li>local communication protocols like WiFi, Bluetooth, NFC, and more,</li>
+<li>typical I/O like storage, cache space, and networking, in a platform-native manner.</li>
+</ul>
+<p>While these crates can certainly be used directly by an application, this model places the serious burden of assembling multiple piecemeal crates into a workable platform abstraction on the shoulders of the application developers themselves.
+This expectation is not feasible for most application developers, as they are neither sufficiently experienced nor have the time to undertake such an arduous task.</p>
+<p>That is why we created the <a href="https://github.com/osiris-apis/osi"><strong>Osiris project</strong></a> — to fill in the gaps and offer a fully-integrated, consistent solution for accessing platform-specific functionality in an abstract manner.</p>
+<h3 id="documentation-is-paramount"><a class="header" href="#documentation-is-paramount">Documentation is paramount</a></h3>
+<p>Another reason many newcomers find it so difficult to get started is that there is a distinct lack of documentation, tutorials, and examples for the vast majority of crates in this domain.</p>
+<p>If examples exist, they are extraordinarily simple and only cover the basics of setting up a primitive UI or application skeleton.
+Holistic tutorials and complete examples are few and hard to come by, which exacerbates the integration problem. 
+Without end-to-end sample code, it is challenging for an expert, let alone a newcomer to the worlds of app dev and Rust, to compose a working system stack by integrating multiple disparate crates together. </p>
+<p>One guiding light in this space is Dioxus, which has <a href="https://dioxuslabs.com/learn/0.4/reference">recently released high-quality comprehensive documentation</a> for both external users and internal contributors along with several well-commented demo apps, making it both easy and enticing to use Dioxus to create new apps.</p>
+<p>For a Rust application development framework to gain real traction, it must lead the pack in terms of documentation quality, tutorial thoroughness, and variety and depth of real-world example application code.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="2-rust-app-dev-offers-clear-business-advantages"><a class="header" href="#2-rust-app-dev-offers-clear-business-advantages">2. Rust app dev offers clear business advantages</a></h2>
+<p>There is a strong business case to be made for application development in Rust.
+Several existing commercial applications have already been &quot;written in Rust,&quot; but Rust is only used to implement an internal business logic layer; the entire remainder of the app (e.g., frontend UI and UX) is written using different platform-specific native languages and SDKs.
+This leads to significant fragmentation and redundant development effort on each platform they wish to support, i.e., wasted expense.</p>
+<p>One such example is <a href="https://signal.org/">Signal</a>, a popular open-source messaging app focused on user privacy. 
+As pictured below, Signal maintains multiple separate repositories for each of its client apps on <a href="https://github.com/signalapp/Signal-Android">Android</a>, <a href="https://github.com/signalapp/Signal-iOS">iOS</a>, and <a href="https://github.com/signalapp/Signal-Desktop">desktop</a>, as well as for its <a href="https://github.com/signalapp/Signal-Server">server</a>.
+The Rust component of Signal is the shared <a href="https://github.com/signalapp/libsignal"><code>libsignal</code> crate</a>, which implements the main Signal protocol functionality in a platform-agnostic manner with multiple bindings to other platform-native languages like Swift, Typescript, and Java.</p>
+<p><img src="whitepaper/motivation/../img/signal.png" alt="Signal app architecture" /></p>
+<p>Each of these app repositories are non-trivial in size: 450K+ LoC on iOS, 350K+ LoC on Android, and 250K+ LoC on desktop.
+The only reason the Signal desktop app is not even more complex and large is because it is built atop the <a href="https://www.electronjs.org/">Electron</a> framework, which is known to be an <a href="https://github.com/signalapp/Signal-Desktop/issues/2178#issuecomment-378233583">inefficient resource hog</a> with <a href="https://github.com/signalapp/Signal-Desktop/issues/2178#issuecomment-384911415">poor accessibility</a> support.
+However, building desktop apps on Electron is still the default choice because it is easy and familiar, and at the time there were no viable alternatives to <a href="https://github.com/signalapp/Signal-Desktop/issues/2178#issuecomment-376466372">the much more expensive option</a> of per-platform native apps on Windows, macOS, and Linux. </p>
+<p>The main disadvantage of having multiple separate app repos is that it is incredibly challenging maintain consistency in both appearance and behavior.
+General maintainability also becomes more tedious, as bugs that manifest differently across platforms must be addressed on an individual basis.
+To their credit, Signal has actually done an impressive job of just that, with help from the community, though naturally some minor issues do slip through the cracks.
+For example, Signal on Android allows placing secure chats behind a screen lock (e.g., using biometrics), but desktop Signal does not offer that.
+Signal on Android cannot search only a single chat only, while other platforms support that filter.
+Mobile Signal apps offer contact-specific notifications, while desktop does not.
+The iOS app does not allow choice of fonts or changing font sizes and has different defaults than others, e.g., for embedded link previews, WiFi vs. cellular data usage, etc.</p>
+<hr />
+<p>Another similar motivating example is <a href="https://element.io/">Element</a>, a first-party <a href="https://element.io/matrix-benefits">Matrix chat</a> client that is also implemented separately on each platform, including <a href="https://github.com/vector-im/element-android">Android</a>, <a href="https://github.com/vector-im/element-ios">iOS</a>, <a href="https://github.com/vector-im/element-desktop">desktop</a>, and <a href="https://github.com/vector-im/element-web">web</a>.
+Unfortunately, the maintenance burden has proven difficult to handle, with Element apps receiving moderately poor user reviews (<a href="https://play.google.com/store/apps/details?id=im.vector.app">3.8⭐ on Google Play</a>, <a href="https://apps.apple.com/us/app/element-messenger/id1083446067">3.5⭐ on Apple's App Store</a>) due to inconsistent behavior, bugs, and slow performance.
+This undoubtedly stems from the effort required to accommodate the idiosyncrasies of each platform, which steals developer focus away from improving the main app-level features and experience.</p>
+<p>Element themselves have acknowledged this issue and began developing a new set of applications called Element X, with a focus on sharing code across platforms via a shared <a href="https://github.com/matrix-org/matrix-rust-sdk">Matrix Rust SDK</a>.
+They are also exploring a new design system called <a href="https://compound.element.io/">Compound</a> that aims to establish consistent UI component implementations shared across iOS, Android, and the web.
+However, both <a href="https://github.com/vector-im/compound#related-projects">Compound</a> and Element X apps on <a href="https://github.com/vector-im/element-x-android">Android</a> and <a href="https://github.com/vector-im/element-x-ios">iOS</a> still exist separately and are implemented with platform-specific UI frameworks, e.g., Jetpack Compose and SwiftUI.</p>
+<!-- cspell:ignore Jetpack -->
+<p>Element claims that the Element X apps are <a href="https://element.io/blog/element-x-experience-the-future-of-element/">up to 6000 times faster</a> than the legacy Element apps, due in part to Rust:</p>
+<blockquote>
+<p>Our new Rust SDK makes development faster and more consistent across the Android and iOS apps, while providing a super-speedy and high quality implementation thanks to Rust’s legendary language safety features. </p>
+</blockquote>
+<p>Although the new sliding sync protocol is likely responsible for the majority of those performance gains, this statement speaks to the <strong>attitude surrounding Rust</strong> — that switching to Rust will bring 💪 huge gains 💪.</p>
+<p>In general, a business stands to gain several competitive advantages from using a cross-platform Rust app dev toolkit, as listed below. These mostly overlap with the benefits of switching to Flutter<sup class="footnote-reference"><a href="#1">1</a></sup>, though <a href="whitepaper/motivation/business_cases.html#rust-is-increasingly-popular-admired-and-wanted">as shown later</a>, developers vastly prefer using Rust over Dart, Flutter's required language.</p>
+<ul>
+<li>Ability to deliver a more consistent experience to customers across platforms.</li>
+<li>Ease of attracting talented developers due to a modern stack and better team culture/morale<sup class="footnote-reference"><a href="#1">1</a></sup>.</li>
+<li>Elimination of redundant development effort across platforms, which: 
+<ul>
+<li>Saves money due to higher productivity, </li>
+<li>Results in a faster time to market, and</li>
+<li>Allows developers to focus more on UI/UX quality.</li>
+</ul>
+</li>
+</ul>
+<p>In conclusion, these favorable Rust experiences, together with the challenges faced by Signal and Element with maintaining separate per-platform app repositories, clearly motivate the need for a multi-platform application development toolkit in Rust.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>A <a href="https://verygood.ventures/whitepaper/business-value-of-flutter">survey by Very Good Ventures</a> found that businesses reported these benefits when switching to Flutter for app development. </p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="3-rust-is-the-right-choice-for-the-future-of-app-dev"><a class="header" href="#3-rust-is-the-right-choice-for-the-future-of-app-dev">3. Rust is the right choice for the future of app dev</a></h2>
+<p>Both current trends and key aspects of Rust reinforce our assertion that Rust is the best choice for the next generation of multi-platform application development.</p>
+<h3 id="rust-is-increasingly-popular-admired-and-wanted"><a class="header" href="#rust-is-increasingly-popular-admired-and-wanted">Rust is increasingly popular, admired, and wanted</a></h3>
+<p>Rust has been voted the most admired language for the past 8 years in a row (2015 - 2023), according to the <a href="https://survey.stackoverflow.co/2023/">StackOverflow annual developer survey</a>.
+For the first time, Rust also became the most wanted language this year (2023).</p>
+<p float="left">
+  <img align="top" src="whitepaper/motivation/../img/rust_loved.png" width="66.9%" />
+  <img align="top" src="whitepaper/motivation/../img/rust_wanted.png" width="30%" />
+</p>
+<p>In addition, Rust is leading the development of technologies for new platforms, e.g., it is the <a href="https://blog.scottlogic.com/2023/10/18/the-state-of-webassembly-2023.html">most frequently used language for WebAssembly (WASM)</a> for the third year running.
+<img src="whitepaper/motivation/../img/wasm-language-usage.png" alt="Rust is highly used in WebAssembly projects" />
+The same study also found that:</p>
+<ul>
+<li>Developers of WASM tools have a strong preference for Rust,</li>
+<li>Rust is the most <em>desired</em> language for projects involving WASM, and</li>
+<li>The leading and most-used WASM runtimes are written in Rust, the <a href="https://github.com/bytecodealliance/wasmtime"><code>Wasmtime</code></a> and <a href="https://github.com/wasmerio/wasmer"><code>wasmer</code></a> projects.</li>
+</ul>
+<p>These trends indicate that Rust adoption will continue to grow, and that other developers are open and willing to learn Rust in order to use it for new applications.</p>
+<h3 id="rust-combines-safety-with-usability-and-performance"><a class="header" href="#rust-combines-safety-with-usability-and-performance">Rust combines safety with usability and performance</a></h3>
+<p>If you're reading this book, you likely already know about the strengths of Rust and the benefits that it provides.
+If not, we cover a select subset of those benefits here.</p>
+<p>First, Rust's strong, static type system guards against type errors at compile time, enabling full type safety.
+This type safety leads to memory safety, which eliminates entire classes of bugs: use after free, double free, buffer overflow and underflow, reading uninitialized memory, concurrency violations like race conditions, and more.</p>
+<p>Rust's memory safety is also statically determinable due to its type-based <a href="https://doc.rust-lang.org/nomicon/ownership.html">ownership model</a> and <a href="https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html">borrow checker</a>, which operate at compile-time.
+This allows Rust programs to execute efficiently without an underlying runtime or a garbage collector, as memory safety and resource management operations (like cleanup routines that invoke destructors) are deterministically inserted <em>by the compiler</em> when a resource is released by its owner (e.g., falls out of scope).</p>
+<p>Another aspect of Rust that contributes to its high performance is its focus on zero-cost abstractions, in which libraries expose higher-level, easier-to-use programming interfaces that still compile down to the equivalent of manually-optimized machine code.</p>
+<p>Some concrete examples of great Rust features include:</p>
+<ul>
+<li>Default <a href="https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#variables-and-mutability">immutability</a> of variables, <a href="https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing">scoped bindings and shadowing</a>, <a href="https://doc.rust-lang.org/book/ch03-05-control-flow.html#loop-labels-to-disambiguate-between-multiple-loops">loops with labels</a>, and more.</li>
+<li><a href="https://doc.rust-lang.org/book/ch05-00-structs.html">Struct definitions</a> with <a href="https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html">flexible naming visibility</a>, <a href="https://doc.rust-lang.org/book/ch05-01-defining-structs.html#unit-like-structs-without-any-fields">newtype wrapper patterns</a>, <a href="https://doc.rust-lang.org/book/ch03-02-data-types.html#the-tuple-type">heterogeneous tuples</a>, etc.</li>
+<li>Excellent sum types (<a href="https://doc.rust-lang.org/book/ch06-00-enums.html"><code>enum</code>s</a>) with contained values, which, along with very ergonomic <a href="https://doc.rust-lang.org/book/ch06-02-match.html">pattern matching</a>, provides <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html">excellent error handling</a> using types like <code>Option</code> and <code>Result</code>.</li>
+<li>Support for <a href="https://doc.rust-lang.org/book/ch10-00-generics.html">generic type parameters</a> for types (structs), functions, associated trait items, and even <a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html">explicit lifetimes</a> for borrowed values.</li>
+<li>Abstraction of interfaces using <a href="https://doc.rust-lang.org/book/ch10-02-traits.html">traits</a>, which can bound generic type parameters and even be used to imitate OOP-like polymorphism.</li>
+<li>Const evaluation of expressions at compile time.</li>
+<li><code>async</code> functions and traits, which the compiler transforms into state machines.</li>
+<li><a href="https://doc.rust-lang.org/book/ch13-00-functional-features.html">Functional programming language features</a> like iterators, closures with value capturing, combinators, and more.</li>
+<li>Both hygienic <a href="https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming">declarative macros</a> as well as <a href="https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes">procedural macros</a> for expressive meta-programming.</li>
+</ul>
+<p>Static type and memory safety enable Rust to catch many classes of bugs at <em>compile-time</em>, which reduces developer frustration, minimizes debugging difficulties, and provides a higher degree of confidence that a program will run correctly and reliably after deployment.
+Early error detection combined with <a href="https://www.rust-lang.org/learn">Rust's excellent documentation</a>, <a href="https://doc.rust-lang.org/book/">tutorial books</a>, IDE <a href="https://rust-analyzer.github.io/">language server plugins like <code>rust-analyzer</code></a>, detailed compiler error messages enable developers to be much more productive than other languages.</p>
+<p>In addition, Rust's safety model can restrict possible root causes of bugs to <a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html"><code>unsafe</code> code</a> regions, though not for basic logic bugs. 
+Rust is also amenable to <a href="https://rust-formal-methods.github.io/tools.html">formal verification</a>, both in terms of verifying soundness of unsafe code blocks, correctness of unsafe-safe code boundaries, and correctness of type-carried invariants.</p>
+<p>While most Rust features and benefits apply to all platforms and execution environments, certain ones are key for mobile platforms.
+High performance is particularly important in interactive systems like mobile devices, in order to provide a smooth, responsive UI/UX without jank.
+Similarly, efficient operation is crucial to extend usable life in battery-powered devices and reduce thermal output in body-proximal hardware without active cooling.</p>
+<h3 id="rusts-core-ecosystem-is-excellent"><a class="header" href="#rusts-core-ecosystem-is-excellent">Rust's core ecosystem is excellent</a></h3>
+<p>Finally, Rust comes with an excellent suite of features and tooling beyond the core language itself.
+First, Rust's primary compiler <code>rustc</code> <a href="https://rustc-dev-guide.rust-lang.org/overview.html#code-generation">uses LLVM as a backend</a>, which affords it two main benefits: </p>
+<ol>
+<li>Rust can leverage LLVM's existing support for <a href="https://doc.rust-lang.org/rustc/targets/index.html">a wide set of target triples</a>, including many architectures, target OS platforms, and library environments.
+<ul>
+<li>Most importantly, the compiler supports cross-compiling by default, making it super easy to build code for a different target than your host. To state the obvious, quick and easy cross-compilation is a <strong>key prerequisite</strong> for a multi-platform app dev framework.</li>
+</ul>
+</li>
+<li>Despite being a relatively young language, Rust can immediately realize highly-optimized code generation thanks to decades of effort poured into LLVM by compiler experts.</li>
+</ol>
+<p>Second, Rust's package manager <a href="https://doc.rust-lang.org/cargo/"><code>cargo</code></a> vastly simplifies discovering, specifying, and correctly building dependencies for your project.
+It integrates tightly with <a href="https://crates.io/"><code>crates.io</code></a>, a registry of crates (projects) from the Rust community that makes it trivial to publish, distribute, and depend on other open-source crates.
+Furthermore, cargo makes it easy to specify dependencies as an exact version or a range of versions of a given crates by utilizing <a href="https://doc.rust-lang.org/cargo/reference/resolver.html#semver-compatibility">SemVer</a> semantic versioning.
+This design avoids the versioning hell that frequently plagues other languages and package manager, and there are even <a href="https://github.com/rust-lang/rust-semverver">community-provided tools</a> to ensure semver compliance when releasing new versions of a crate.</p>
+<p>Third, the set of packages available in the Rust world is <em>far</em> larger in both number and scope than that of Flutter, the leading cross-platform app dev framework.
+Rust's <code>crates.io</code> registry includes around 130,000 packages, while Flutter's registry of Dart packages <a href="https://pub.dev/"><code>pub.dev</code></a> is only about one quarter of that.
+More importantly, the <a href="https://crates.io/categories">breadth of domains</a> covered by the Rust crate ecosystem is massive, including topics like compression, cryptography, finance, game engines, mathematics, multimedia, parsing, scientific computing, text editing/processing, and more. 
+This allows a Rust app developer to immediately and easily bring in a ready-to-use set of dependencies across a wide berth of app topics, which more likely covers unique, niche app use cases.
+In comparison, the Dart package registry is primarily concerned with basic app topics, e.g., UI widgets and UX behavior.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="rust-does-have-some-relevant-shortcomings"><a class="header" href="#rust-does-have-some-relevant-shortcomings">Rust does have some relevant shortcomings</a></h2>
+<p>While Rust offers an excellent experience for systems development, it does have some disadvantages from a UI standpoint, many of which represent obstacles for its usage in application development.</p>
+<h3 id="1-lack-of-inheritance"><a class="header" href="#1-lack-of-inheritance">1. Lack of inheritance</a></h3>
+<p>First, Rust doesn't support true type-level inheritance, only interface-level inheritance (at the trait level).
+This makes it difficult to realize the object-oriented programming design patterns to which UI developers are typically accustomed, e.g., a base displayable/widget class from which other subclasses can inherit and override functionality as necessary.</p>
+<h3 id="2-representing-shared-mutable-state-is-hard"><a class="header" href="#2-representing-shared-mutable-state-is-hard">2. Representing shared mutable state is hard</a></h3>
+<p>Second, it can be difficult to implement access to shared mutable state in Rust.
+The ownership and borrow-checking semantics are not yet sophisticated enough to support all use cases and programming patterns typically found in UI development and state management frameworks, e.g., updating a state from a background thread that is then read by the main UI thread to re-display it on a widget.
+This is because Rust strictly enforces an &quot;aliasing XOR mutability&quot; rule for memory safety, meaning that there cannot be multiple simultaneous mutable aliases to a piece of shared state — only one mutable alias <em>or</em> multiple immutable aliases, but not both.</p>
+<p>For example, a global static variable can be freely aliased multiple times, but only accessed <em>mutably</em> through unsafe code, which is undesirable, or via a wrapper type that offers interior mutability with some sort of mutual exclusion mechanism, e.g., a <code>Mutex</code>.
+Even for states shared across different parts of a single thread, e.g., among async tasks, mutability still must be separated from aliasing, which is typically realized via the <code>RefCell</code> wrapper type (a single-threaded <code>Mutex</code> equivalent). 
+Also, as Rust lacks runtime garbage collection, the de facto alternative is to wrap states with reference-counter pointer type, e.g., <code>Rc</code> or <code>Arc</code>, for easy sharing of states whose lifetimes are only determinable at runtime.
+The result of these rules and conventions is that code becomes less ergonomic and readable, as it must be littered with <code>Arc&lt;Mutex&lt;State&gt;&gt;</code> or <code>Rc&lt;RefCell&lt;State&gt;&gt;</code> patterns rather than just direct access to <code>State</code>.</p>
+<h3 id="3-slow-compilation"><a class="header" href="#3-slow-compilation">3. Slow compilation</a></h3>
+<p>Third, the Rust compiler has a reputation for being &quot;slow&quot; in that compile times for large Rust projects can be high, at least compared to other languages.
+This is primarily due to the need for and the ability of Rust to perform more safety checks at compile time than other languages.
+The problem with slow compilation is that it lengthens the iterative development cycle, making it more tedious to test a quick change and reducing the overall productivity of app developers.
+The good news is that compilation times are continuously improving thanks to the efforts of <a href="https://nnethercote.github.io/">Nick Nethercote and others</a>, but this still may pose a problem to Rust frameworks that wish to incorporate many features into a project build.</p>
+<h3 id="4-steep-learning-curve"><a class="header" href="#4-steep-learning-curve">4. Steep learning curve</a></h3>
+<p>Finally, Rust is known to have a steep learning curve, as the aforementioned rules for memory safety often present a barrier to newcomers, colloquially referred to as <a href="https://www.google.com/search?q=rust+fighting+the+borrow+checker">&quot;fighting the borrow checker&quot;</a>.
+While systems programmers and low-level programmers may already possess a deeper understanding of memory models and memory safety restrictions, frontend developers are less likely to be intimately familiar with these topics, as they are accustomed to working in higher-level languages that abstract away and handle memory management implicitly.
+A survey from Very Good Ventures found that <a href="https://verygood.ventures/whitepaper/business-value-of-flutter">frontend developers needed around 3.5 months of retraining</a> to switch from a platform-native framework to the cross-platform Flutter framework before they could be equally productive.
+It is possible that switching frontend developers to a Rust-based multi-platform framework like Robius could impose an even steeper barrier to entry.
+As framework designers, we must be careful to strike a balance between explicitness, expressiveness, and simplicity in order to not get in the way of app developers' intentions and productivity.</p>
+<!-- cspell:ignore Nethercote -->
+<div style="break-before: page; page-break-before: always;"></div><h1 id="project-goals"><a class="header" href="#project-goals">Project Goals</a></h1>
+<p>The Robius project has set forth the following goals:</p>
+<ul>
+<li>Establish a Rust app dev community and drive ecosystem development</li>
+<li>Create reference design of full app + system stack</li>
+<li>Develop flagship apps and simpler demo apps as proofs of concept</li>
+<li><span style="color: gray;"> (Future) Give feedback to Rust's lang, libs, and cargo teams </span></li>
+</ul>
+<p>The following sections provide more details on each of these goals.
+All in all, we hope that Robius will attract front-end developers to the world of Rust and encourage existing Rust experts to broaden their horizons and explore the application development domain as well.</p>
+<h2 id="community-and-ecosystem"><a class="header" href="#community-and-ecosystem">Community and ecosystem</a></h2>
+<p>Our goal is to establish the Robius project as a collective, communal space for all things related to multi-platform app development in Rust.
+As this community doesn't yet exist, we are building it from the ground up.
+Thus far, we have the <a href="https://github.com/project-robius/"><code>project-robius</code> GitHub organization</a> that aims to serve as a starting point, but once the vision has had more time to incubate and grow, we will create a working group related to app dev in Rust.
+We also intend to host and maintain an &quot;are we app yet&quot; website that tracks the status and progress of our Rust app dev work in a public and easy-to-follow format.</p>
+<p>As part of building this community, we aim to collect and maintain a set of crates related to app dev that are highly functional and actively supported.
+In short, this amounts to identifying key projects in the space and inviting their authors, maintainers, and contributors to participate in the larger Robius vision.
+Thus far, we have welcomed two major UI frameworks, Makepad and Dioxus, and a platform abstraction framework, Osiris, into the community.
+We aim to foster collaboration between these founding projects in order to enable each project to jointly benefit from contributions and improvements to other projects.</p>
+<blockquote>
+<p>If you are interested in adding your project or suggesting another project to add to Robius, please don't hesitate to reach out to us.
+We're always looking for more projects to include in the Robius ecosystem!</p>
+</blockquote>
+<p>Another major goal of the Robius vision is to drive the <em>non-code</em> components of the ecosystem forward, i.e., documentation.
+This whitepaper is one example, but we also strive to publish and support holistic (cross-project) docs and detailed tutorials, as well as provide a platform for blogs and discussion forums related to Rust app development.</p>
+<h2 id="reference-design-for-full-system-stack"><a class="header" href="#reference-design-for-full-system-stack">Reference design for full-system stack</a></h2>
+<p>The central goal of the Robius project is to deliver a complete working solution for multi-platform app development, in which all components in both the application and the systems stack are written in Rust.</p>
+<p>We call this a &quot;reference design&quot; because it embodies only <em>one</em> incarnation of how the ecosystem of loosely-coupled components can be assembled into a fully-working stack.
+The intent is for the reference design to act as a &quot;blessed&quot; systems stack that new developers can use to quickly and easily start building apps, i.e., a pre-integrated combination of components that are known to work well together.
+At the same time, we wish to allow expert developers to tailor the stack to meet their more complex needs, e.g., by selecting or building different components to replace individual pieces of the stack.</p>
+<p>The goal of the Robius reference design is to support all major platforms and OS environments, with mobile and desktop being the priority targets:</p>
+<ul>
+<li>Mobile: Android, iOS</li>
+<li>Desktop: Linux, macOS, Windows</li>
+<li>Other: OpenHarmony</li>
+<li>Web (plus WebAssembly) </li>
+</ul>
+<p>The following diagram shows the proposed architecture of this reference design, which is described in greater detail in the system architecture section of this whitepaper.</p>
+<p><img src="whitepaper/img/reference_design.png" alt="Robius Reference Design" /></p>
+<h2 id="flagship-apps-and-examples"><a class="header" href="#flagship-apps-and-examples">Flagship apps and examples</a></h2>
+<p>In addition to the systems stack reference design, our other important deliverable goal is a series of open-source applications, in two broad categories:</p>
+<ol>
+<li>Flagships apps
+<ul>
+<li>Full set of features with robust UI &amp; UX</li>
+<li>Intended for actual usage/dogfooding</li>
+<li>Commercial quality; publishable to app stores</li>
+</ul>
+</li>
+<li>Example/demo apps
+<ul>
+<li>Simple structure intended to demonstrate a single feature</li>
+<li>Minimal, incomplete UI &amp; UX</li>
+<li>Missing features represented by mock stub implementations, e.g., simulated server/database backends</li>
+<li>Can be used for automated testing/benchmarking</li>
+</ul>
+</li>
+</ol>
+<p>We will strive for both flagship and example applications to be designed clearly, well-structured, thoroughly commented, and accompanied by documentation like a tutorial-style walkthrough.
+The overarching goal is for these apps to be easily forked and modified by new developers, such that they can use these apps as templates for a quick start.</p>
+<p>Our primary flagship application will be a Matrix chat client, tentatively called Robrix (Robius + Matrix).
+The rationale behind this decision is manyfold:</p>
+<ul>
+<li>The Matrix protocol, like Robius, is open-source, free, and decentralized.</li>
+<li>A chat client's features depend on a wide set of functionality from the underlying system, which will help steer and prioritize development of Osiris and its integration with UI toolkits like Makepad.</li>
+<li>A chat client consists of multiple different UI views, which will drive development of a robust widget library and an expanded set of UI toolkit features.</li>
+<li>It requires complex app/business logic like user authentication and account management, sending, receiving, and synchronizing messages, handling persistent state (caching, settings), delivering notifications, accessing local storage, etc.</li>
+<li>Demanding features can be optionally added to stress test our system abstractions, e.g., audio/video chat, multimedia capture and playback, image display, etc.</li>
+<li>Several Matrix chat clients already exist, which comprise a good basis for comparison between the Robius framework and the frameworks used to implement those clients. We can evaluated both the qualitative development experience and resulting application behavior of Robrix as well as its quantitative performance, relative to that of the other chat clients.</li>
+</ul>
+<p>The below diagram shows a tentative overview of the architecture of Robrix, including the components needed to realize its full set of features. We note that while this a multi-year endeavor, we hope to have a basic MVP available by mid-2024.</p>
+<p><img src="whitepaper/img/robrix_architecture.png" alt="Robrix Matrix Chat Client Proposed Architecture" /></p>
+<p>For the example applications, some initial ideas are listed below, several of which are already in progress.</p>
+<ul>
+<li>Simple to-do or notes app</li>
+<li>Social media news feed, e.g., Twitter, Facebook</li>
+<li>Social video sharing apps, e.g., TikTok, YouTube shorts</li>
+<li>Shopping/e-store app, e.g., Taobao, eBay, Amazon, Etsy</li>
+<li>Basic drawing/sketch app, e.g., paint</li>
+</ul>
+<h2 id="advertise-business-value-of-robius"><a class="header" href="#advertise-business-value-of-robius">Advertise business value of Robius</a></h2>
+<p>In the long term, our ultimate goal is drive the development of Robius into a robust, stable ecosystem that inherently demonstrates what is possible with Rust.
+We can then leverage the positive experiences of creating apps atop Robius to evangelize for the usage of Rust in the app dev world, especially in business scenarios.</p>
+<p>Our objective is to show that businesses stand to gain the following benefits from switching to Robius, many of which correspond to <a href="whitepaper/./motivation/business_cases.html">the motivating factors</a> behind the Robius vision itself.</p>
+<ul>
+<li>Usage of a modern framework and highly-desired language tends to attract top developers and improve team culture and morale.</li>
+<li>A multi-platform framework reduces headcount overhead, as developers only need to know Rust and the framework, not the intimate details of each platform.</li>
+<li>Customers get to enjoy a more consistent UI and UX across disparate platforms.</li>
+<li>Maintainability is easier, enabling more rapid and consistent bug fixes at lower cost, which also leads to higher customer satisfaction and engagement.</li>
+<li>Smooth integration with the rest of Rust's huge ecosystem of crates allows developers to lean on the significant shoulders of open-source projects, especially beyond UI elements.</li>
+<li>An open-source, distributed, and decentralized project structure gives business leaders confidence about the staying power and independent directions of the framework.</li>
+<li>Last but not least, developers get to use Rust!</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="technical-requirements"><a class="header" href="#technical-requirements">Technical Requirements</a></h1>
+<p>This section expands on the requirements inherent to the success of the Robius vision and our initial strategies for how to meet them.
+These requirements can also be seen as additional project goals, but more technical in nature than those in the previous chapter.</p>
+<p>As shown in the following Venn diagram, we have split the set of target requirements into two broad categories: those related to runtime, and those related to build time or developer tooling.
+Certain requirements touch on both runtime and build-time system aspects.
+The following sections discuss each requirement in more detail.</p>
+<p><img src="whitepaper/requirements/../img/requirements.png" alt="Technical Requirements" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="efficient-performant-execution"><a class="header" href="#efficient-performant-execution">Efficient, performant execution</a></h2>
+<p>The first and most important requirement falls under the runtime behavior category: high performance, efficient execution.
+While this can be a bit of a nebulous goal, our general target is to be at least as performant and efficient as platform-native applications.
+Specifically, the minimum performance requirement for Robius across all platforms is for standard application animations to be able to achieve a consistent framerate of 60 frames per second (FPS), which is the native framerate of most legacy device screens.
+Efficiency-wise, apps built using Robius must not have a larger memory footprint nor consume more power than an equivalent app written using the platform-native SDK.</p>
+<p>While 60FPS is the bare minimum, modern mobile devices typically support higher framerates, such as flagship smartphone screens and virtual/augmented reality head-mounted displays that operate at 90Hz or 120Hz;
+high-end desktops and laptops frequently have monitors capable of even higher framerates up to 240Hz.
+Therefore, the higher-end performance framerate that Robius will target is 120Hz, in order to fully leverage modern mobile hardware.</p>
+<p>As pictured below, the central requirement of high efficiency and performance leads to follow-up requirements (<span style="color:green;">in green</span>) of <em>(1)</em> high responsiveness and <em>(2)</em> low energy consumption.
+It also stems from prerequisite requirements (<span style="color: orange;">in orange</span>) of <em>(1)</em> an efficient, performant implementation language (i.e., Rust), <em>(2)</em> the avoidance of slow communication mechanisms with the underlying platform, and <em>(3)</em> the availability of low-overhead, accurate profiling mechanisms across the system stack.</p>
+<p>We discuss these individual post- and pre-requirements in more detail below.</p>
+<p><img src="whitepaper/requirements/../img/efficient_execution.png" alt="Efficient, Performant Execution" /></p>
+<h3 id="pre-requirements-what-leads-to-efficiencyperformance"><a class="header" href="#pre-requirements-what-leads-to-efficiencyperformance">Pre-requirements: what leads to efficiency/performance?</a></h3>
+<p>Three main factors will contribute to the ability of Robius to meet these requirements: </p>
+<ol>
+<li>Using an efficient, performant language.</li>
+<li>Using efficient mechanisms to communicate with the underlying platform.</li>
+<li>Supporting a low-overhead mechanisms to profile the application, inclusive of the entire Robius stack.</li>
+</ol>
+<h4 id="choice-of-language"><a class="header" href="#choice-of-language">Choice of Language</a></h4>
+<p>The first pre-requirement is already met by virtue of our project charter to use Rust.
+As described in <a href="whitepaper/requirements/../motivation/rust_is_right.html#rust-combines-safety-with-usability-and-performance">a previous motivation subsection</a>, Rust is generally quite efficient because it does not have an underlying runtime or garbage collection (as with C and assembly), so nothing is required to run between the generated code and the machine code.
+Another aspect that further contributes to the ability to achieve high performance with Rust is its aggressive reduction of runtime overhead via zero-cost abstractions and compile-time operations, e.g., type and memory safety analysis along with a powerful (and ever improving) engine for const evaluation.
+Rust also makes concurrency easy to realize with confidence due to <a href="https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html">built-in traits</a> for defining <a href="https://doc.rust-lang.org/nomicon/send-and-sync.html">thread safety (<code>Send</code> and <code>Sync</code>)</a>, which reduces the complexity of and barrier to entry for improving performance by leveraging multi-core hardware.</p>
+<h4 id="communication-mechanisms"><a class="header" href="#communication-mechanisms">Communication mechanisms</a></h4>
+<p>The second pre-requirement — using low-overhead mechanisms to communicate with the underlying platform — is one that both Osiris and the UI toolkit(s) will need to address
+The most informative perspective from which we can look at this requirement is to examine what <em>not</em> to do, i.e., learn from the disadvantages of other cross-framework &quot;bridge&quot; approaches.
+Bridge projects support interaction between app dev frameworks and other programming languages, both for native (e.g., Jetpack Compose, SwiftUI) and cross-platform frameworks (e.g., Flutter, React Native). 
+However, they typically use (de)serialization to send data between the framework and other language, which sometimes also operate in different processes, requiring inter-process communication (IPC).
+Both serialization, deserialization, and IPC mechanisms all contribute to high overhead, which in turn reduces efficiency (longer battery life and less thermal output), lowers responsiveness by imposing additional latency into the app's main event loop, and harms overall performance.</p>
+<p>For Osiris, our guiding philosophy is to first expose direct unfettered access to native platform APIs with <em>no</em> abstraction layers atop them, i.e., implement platform functions and types via FFI/<code>extern</code> definitions.
+Only after native features are fully exported via direct FFI will Osiris begin to develop low- to zero-cost abstractions atop these FFIs.
+Thus, by using direct in-process foreign function calls and FFI-compatible type definitions instead of expensive IPC or serialization, we should be able to avoid platform communication overhead and meet this requirement for all non-UI componentry.
+Note that Osiris also follows this philosophy for its build tooling.</p>
+<p>Similarly, the Makepad UI toolkit has always been strongly against unnecessary or overly-deep abstraction layers, instead preferring to directly use platform-native functionality via in-house custom crates, which not only reduce runtime overhead to a bare minimum but also keep compile times very short.
+Other UI toolkits may choose different points in the design space with varying tradeoffs between communication overhead and level of abstraction, but they must aim to keep these costs minimal by avoiding serialization and other expensive data marshalling operations wherever possible.</p>
+<h4 id="profiling-mechanisms"><a class="header" href="#profiling-mechanisms">Profiling mechanisms</a></h4>
+<p>The third pre-requirement is to enable developers to easily profile the performance of any part of their application as well as any component within the Robius system stack.
+This ties into the other requirements because profiling exists to help developers resolve performance problems by determining where bottlenecks and slowdowns exist in their code.</p>
+<p>To meet this requirement, we aim to leverage standard sampling-based performance analysis and tools to generate accessible overviews, e.g., <code>perf</code> and flame graphs.
+We also intend to implement detailed tracing mechanisms, à la <a href="https://www.kernel.org/doc/html/v4.18/trace/ftrace.html">Linux's function tracing (ftrace)</a> or the Rust <a href="https://crates.io/crates/tracing"><code>tracing</code></a> crate, in order to allow developers to easily collect diagnostic data by turning on instrumentation events, ideally at module-level and/or criticality-level granularity.
+In addition, we will provide detailed documentation on how to set up and use  existing debugging tools with the Robius framework, while ensuring that build toolchains are capable of emitting necessary debug info that is accurate for  all integrated Rust components.
+Finally, we plan to openly collaborate with the <a href="https://oniroproject.org/">Oniro project</a> on a joint endeavor to implement tracing support on new platforms like OpenHarmony.</p>
+<p>As Robius continues to develop, we will expand upon our strategies to meet this requirement.</p>
+<h3 id="post-requirements-what-stems-from-efficiencyperformance"><a class="header" href="#post-requirements-what-stems-from-efficiencyperformance">Post-requirements: what stems from efficiency/performance?</a></h3>
+<p>The primary benefit of high performance and efficiency is <em>responsiveness</em>, while the secondary benefit is energy efficiency.</p>
+<h4 id="responsiveness"><a class="header" href="#responsiveness">Responsiveness</a></h4>
+<p>Responsiveness is typically measured in terms of end-to-end latency: the elapsed time from when an input occurs to when the resulting visual change from that input is first displayed.
+For most modern devices, this latency is on the order of tens to hundreds of milliseconds, i.e., 20ms – 150ms.
+Low responsiveness (high input-to-display latency) is most noticeable and detrimental to the user experience on <em>touchscreen</em> devices, which are commonly found on mobile platforms and occasionally on laptops.
+To understand why, check out this video from Microsoft Research's <a href="https://www.youtube.com/watch?v=vOvQCPLkPt4">classic touch input latency experiment</a>.</p>
+<p>As with the other related requirements, our initial target is that an app using Robius must not exceed the latency of an equivalent app built for the native platform.
+It is difficult to set a more precise target for input-to-display latency, as many impactful factors lie beyond our framework's control: the native platform's software latency, the underlying hardware (especially graphics accelerators), an application's implementation decisions, and so on.</p>
+<p>One likely candidate to use as a basis for comparison is the responsiveness of scrolling a webpage in a platform-native webview, as web scrolling is a very common action that general users are familiar with and can understand and visualize.
+<a href="https://danluu.com/input-lag/">This series of experiments</a> shows latency measurements for web scrolling on a variety of mobile and desktop platforms, which could serve as a baseline starting point for this requirement; however, many of those figures are for older devices circa 2017. 
+In the future, we may be able to set a more specific responsiveness goal for certain combinations of specific application behavior on specific platforms.</p>
+<p>All of the aforementioned tactics to achieve high performance also apply to meeting latency requirements. 
+In addition, we anticipate experimenting with ylong's support for priority-based async task scheduling, in which we can assign interactive tasks a higher priority than background tasks or those that do not directly affect the UX and UI responsiveness.
+To the best of our knowledge, no other async frameworks offer a customizable notion of per-task priority.
+This may bring a significant improvement compared to <a href="https://tokio.rs/"><code>tokio</code></a>, the de facto async framework of choice, especially for applications that are heavily I/O-bound.</p>
+<h4 id="energy-efficiency"><a class="header" href="#energy-efficiency">Energy efficiency</a></h4>
+<p>The secondary target benefit is energy efficiency, which is particularly important for battery-powered devices, e.g., mobile, embedded, and extended reality headsets.
+This is reflected in nearly every market survey, in which <a href="https://9to5mac.com/2021/03/19/iphone-buyers-want-battery-life-over-5g/">consumers rank battery life as the most important characteristic</a> when buying a smartphone.</p>
+<p>As with the prior requirements, energy efficiency is affected by many disparate factors, so we again return to the conservative metric of Robius apps not being less efficient than equivalent apps written for the native platform.
+Comparatively speaking, this requirement should be easier to meet due to the nature of Rust-generated machine code lacking overhead of an underlying runtime, VM, or garbage collector.
+Clearly, the UI layer also has a significant impact on energy consumption, which is why our UI toolkits emphasize efficient operation in their design choices.
+For example, Dioxus uses intelligent diffing to reduce the volume of updates required to its virtual DOM, which prevents unnecessary re-rendering operations;
+Makepad bypasses the underlying webview component entirely, as they are known to be relatively heavyweight, in favor of directly accessing the native graphics layer to perform rendering operations.</p>
+<p>A future line of work will involve supporting energy-aware and topology-aware scheduling of tasks/threads across heterogeneous CPU cores, which is common on mobile devices, e.g., <a href="https://www.arm.com/technologies/dynamiq">ARM's <code>dynamIQ</code> system</a> (previously <a href="https://www.arm.com/technologies/big-little"><code>big.LITTLE</code></a>).
+This will enable our concurrent/parallel execution layer to more intelligently utilize the hardware's available power budget by considering it jointly alongside the CPU topology and capability of each core.</p>
+<!-- cspell:ignore ftrace -->
+<div style="break-before: page; page-break-before: always;"></div><h2 id="fast-application-startup"><a class="header" href="#fast-application-startup">Fast application startup</a></h2>
+<p>The second requirement in the runtime behavior category is fast startup for applications, i.e., a short app launch time.
+Decades of surveys have revealed the importance of this metric, as it affects the overall responsive feel of the system and can negatively impact consumer opinion of a company.
+For example, <a href="https://www.appsflyer.com/blog/tips-strategy/app-performance/#:%7E:text=How%20important%20is%20app%20performance,the%20first%20month%20of%20download.">70% of mobile app users will abandon an app</a> if it takes too long to load, and between <a href="https://embrace.io/blog/observability-mobile-app-performance/#:%7E:text=According%20to%20a%20recent%20report,fewer%20chances%20before%20uninstalling%20it.">49%</a> to <a href="https://www.appdynamics.com/blog/engineering/3-mobile-app-performance-issues-you-cant-ignore">59%</a> of users expect apps to start in under 2 seconds.
+Similarly, <a href="https://www.gigaspaces.com/blog/amazon-found-every-100ms-of-latency-cost-them-1-in-sales">studies of webpage load times</a> found that an extra 0.5 seconds in Google page generation results in 20% less traffic, every 100ms of additional latency reduces Amazon's sales by 1%, and that ultimately <a href="https://neilpatel.com/blog/loading-time/">53% of visitors will leave a website</a> if it takes over 3 seconds to load.</p>
+<p>Our target is a 2-second cold start, which means that an application being launched for the first time since system boot must display its UI and be interactive within 2 seconds.
+The <em>time to initial display</em> (TTID) should be far less, in that the application must display at least <em>something</em> within 500ms.
+We derive these requirements from guidelines published by mobile app publishers (iOS and Android), who recommend cold starts within 3-5 seconds, warm starts within 2 seconds, hot starts within 1.5 seconds, and TTIDs within 250-500ms.
+We tend to the lower side of the cold start metric, because fast cold start times benefit not only users but also developers, as it helps to shorten the iterative build-run-test development cycle.</p>
+<p>Notably, some of these factors are beyond the control of Robius.
+For example, on Android, a cold start requires the following procedures: process creation, class loading, application initialization, activity creation, layout inflation, and rendering.
+The first two are completely under the control of the platform, while the other four are at least partially under the domain of Robius components.
+Similar procedures are undertaken on iOS and desktop platforms.</p>
+<p>That being said, design and implementation choices within Robius can affect all stages of application startup.
+The primary directive of writing everything in Rust removes the concern about inconsistent performance due to garbage collection or just-in-time compilation jank at startup, because Rust is a fully ahead-of-time compiled language.
+However, Rust binary sizes are notoriously larger than other languages, which may increase loading and dynamic linking time when creating the application process.
+In general, Robius will follow other canonical best practices for reducing startup latency:  maximize lazy initialization, avoid synchronous operations, move work off of the main UI thread, etc.</p>
+<!-- cspell:ignore TTID, TTIDs --><div style="break-before: page; page-break-before: always;"></div><h2 id="quick-compilation"><a class="header" href="#quick-compilation">Quick compilation</a></h2>
+<p>The third requirement for quick compilation lies solely on the side of build tooling.
+Compile time has an even more significant impact on the developer experience and iteration cycle length than the previous requirement of fast app startup.</p>
+<p>It is difficult to set an absolute value for this metric, as compilation is heavily affected by the nature of the application content.
+However, we can establish a target that is more relative: compiling the Robius frameworks shall not constitute an unbearable addition to the overall compilation time of the application.
+While this is unrealistic for simple applications, we can revise this into the following:</p>
+<p><strong><em>Incremental</em> compilation must be fast enough to be interactive.</strong></p>
+<p>This means that a quick code change should be compilable within a few seconds, such that the developer does not suffer loss of mental focus or context while waiting for compilation to complete.</p>
+<p>One major challenge is the pervasive notion across online communities that the Rust compiler is slow.
+Although this is a contentious issue, it is true that <code>rustc</code> must do more compile-time actions than other languages with fewer static safety guarantees.
+While the compiler team has taken <a href="https://nnethercote.github.io/2023/08/25/how-to-speed-up-the-rust-compiler-in-august-2023.html">significant action to improve compiler performance</a>, Robius must be careful to explicitly subvert this negative expectation.</p>
+<p>Robius makes several design choices to combat high compilation times.
+First and foremost, both the Makepad and Dioxus UI toolkits support <strong>hot reloading</strong>, in which an application can be live updated without restarting it.
+This enables developers to instantly observe changes to an application's UI without needing to re-compile at all.
+Makepad also provides a minimal set of in-house dependencies for very fast compilation, which helps speed up iterative rebuilding of application components that cannot yet be hot-reloaded.
+Another contributing aspect is the desired project structure of many small crates, which enables Robius to benefit from parallelization of distinct compilation units.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="consistency-across-platforms"><a class="header" href="#consistency-across-platforms">Consistency across platforms</a></h2>
+<p>The fourth requirement of cross-platform consistently is relevant to both runtime and build-time behavior, though is primarily focused on the latter.
+The key part of this requirement is that developers should never be <em>required</em> to touch platform-specific code in their application.
+However, they should be able to access platform-specific functionality with relative ease, if desired or needed.
+Though challenging, Robius can meet this requirement through careful design of abstractions that easily reveal lower-level features, e.g., downcasting Rust traits to concrete platform-specific types.</p>
+<p>The runtime-focused aspect of this requirement is that platform-agnostic abstractions should impose no overhead (or as little as possible) compared to using the underlying platform-native code directly.
+Although this is technically more of a design-time requirement, the implementation choices therein will ultimately affect runtime behavior, namely execution efficiency.
+To this end, Rust libraries typically strive to offer zero-cost abstractions, and Robius components shall do the same in this regard.</p>
+<h2 id="flexibility-to-incorporate-other-components"><a class="header" href="#flexibility-to-incorporate-other-components">Flexibility to incorporate other components</a></h2>
+<p>The fifth requirement for flexible componentization is primarily a build tooling concern.
+This encompasses two sub-requirements at varying levels of importance:</p>
+<ol>
+<li>Developers must be able to easily incorporate arbitrary third-party components (crates) into the system stack. </li>
+<li>(Future) Developers should be able to select between one of many choices for various modularization levels, e.g., pick from multiple UI toolkits when setting up an application project environment.
+<ul>
+<li>Ideally, a default component could be replaced with a drop-in compatible third-party version of that component<sup class="footnote-reference"><a href="#1">1</a></sup>.</li>
+</ul>
+</li>
+</ol>
+<p>Robius's build infrastructure must be able to support flexible, modular build manifests.
+In addition, the constituent individual projects shall not be tightly coupled to one another, but rather loosely coupled via abstract layers that enable compatibility across different projects that inhabit the same role or responsibility, e.g., UI toolkits, platform abstractions, concurrency runtimes, etc.
+Currently, we are working with members of the Cargo team to add any required missing features to Cargo, as well as experimenting with higher-level build systems that sit atop and invoke Cargo as needed.
+The Osiris project is also developing its own Cargo-compatible build tool for expressing complex build procedures related to packaging applications into publishable units.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>This is a distant goal of Robius, but initial versions will likely not support arbitrary drop-in replacement components until Robius is more stable and cross-component boundary interfaces have been clearly established.</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="compliance-with-platform-policies"><a class="header" href="#compliance-with-platform-policies">Compliance with platform policies</a></h2>
+<p>The sixth and final requirement is for real-world applications developed using Robius to be fully compliant with platform-specific policies.
+This concerns both runtime behavior and decisions made at build time, with the ultimate purpose of ensuring that Robius apps can be published to actual app stores, e.g., Google Play Store (Android), Apple's App Store (iOS, macOS), Microsoft Store (Windows), Flatpak's Flathub (Linux), and more. </p>
+<p>Attempting to publish applications that do not comply with these policies results in errors, such as these returned by build tools on iOS:</p>
+<ul>
+<li>
+<blockquote>
+<p>Error: the app references non-public symbols in <code>&lt;path&gt;</code>. If method names in your source code match the private Apple APIs listed above, altering your method names will help prevent this app from being flagged in future submissions. In addition, note that one or more of the above APIs may be located in a static library that was included with your app. If so, they must be removed.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Error: Invalid Bundle Structure - The binary file <code>&lt;file&gt;</code> is not permitted. Your app can't contain standalone executables or libraries.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Note: applications must be packaged and submitted using technologies provided in Xcode; no third-party installers allowed. They must also be self-contained, single app installation bundles and cannot install code or resources in shared locations.</p>
+</blockquote>
+</li>
+</ul>
+<p>The corresponding design-time requirement is that Robius must not depend on private platform APIs to realize higher-level abstractions.
+Technically, we can leverage such hidden functionality for &quot;hacky&quot; non-compliant solutions that speed up dev builds, as long as they can be transparently replaced with the official APIs for publishable release builds.
+For example, Makepad provides custom, stripped-down versions of Android and iOS SDK modules, which shrinks the size and scope of these dependencies, <em>significantly</em> reducing compile times. 
+However, publishing an app built against these dependencies may not be compatible with all platform guidelines.</p>
+<p>To this end, Osiris build infrastructure ensures that platform requirements are met by always using the native platform toolchain to generate the final package.
+This prevents accidental violations of packaging requirements, e.g., including third-party components that are not allowed in the app package.
+An additional advantage of this approach is easy integration with other platform-specific tools, such as linters, package checking systems, static analyzers, performance profiling tools, and more.</p>
+<p>The corresponding runtime requirement is that Robius must not attempt to download or run third-party code not originally included in the app package, which is mostly a concern on mobile platforms.
+Loading said foreign code is expressly forbidden on iOS and implicitly disallowed on Android.
+Similarly, just-in-time (JIT) compilation of code is also prohibited on iOS, while Android's ART runtime has deprecated JIT in favor of ahead-of-time (AOT) compilation.
+Android also therefore no longer supports loading class files from native code.
+These restrictions render certain potential mechanisms for cross-platform abstractions impossible, forcing us to adopt other solutions that comply with these rules.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
